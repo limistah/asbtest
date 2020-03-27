@@ -10,6 +10,37 @@ This is the boilerplate for creating an API server in AdonisJs, it comes pre-con
 
 ## Setup
 
+### Environment Variables
+
+The following environment variables are required to be set in a `.env` file in the root of the application:
+
+```
+HOST=127.0.0.1
+PORT=3000
+NODE_ENV=development
+APP_NAME=AdonisJs
+APP_URL=http://${HOST}:${PORT}
+CACHE_VIEWS=false
+APP_KEY=smqMER11yGB0Lij6OjzlB0eRHrhYwNvT
+DB_CONNECTION=pg
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=password
+DB_DATABASE=adonis
+HASH_DRIVER=bcrypt
+```
+
+### Database
+
+This project uses postgres. Ensure to create a database with a name of `adonis` (specified in the env file).
+
+A local postgres can be accessed with `psql -U postgres -P password`.
+
+If it runs in a docker container, it could be accessed through: `docker exec -it postgres bash` then running `psql -U postgres` inside the bash provided for the container.
+
+### Deploy environment
+
 This project is dockerized, and contains a Dockerfile which basically bootstraps a container image for AdonisJS application, it expects that you have Docker and Docker Compose installed. To run off docker, simply run `docker-compose up --build`. This command would make the project available on port `3333` of the host computer. This commands also refreshes the migration and seeders.
 
 If you don't have docker simply clone the repo and then run `npm install`.
