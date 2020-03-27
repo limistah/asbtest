@@ -1,0 +1,29 @@
+version: "2"
+services:
+  adonisjs:
+    container_name: adonisjs
+    build:
+      context: .
+    volumes:
+      - ./:/home/node/app
+    command: "adonis serve --dev"
+    ports:
+      - 3000:3333
+    # depends_on:
+    #   - postgress
+    networks:
+      - app-proxy
+
+#   postgress:
+#     image: "postgres"
+#     volumes:
+#       - ./pg-data:/data
+#     ports:
+#       - "6379:6379"
+#     environment:
+#       - POSTGRESS_PASSWORD: "my_password"
+#     networks:
+#       - app-proxy
+
+networks:
+  app-proxy:
