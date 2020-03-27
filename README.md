@@ -54,3 +54,69 @@ Run the following command to run startup migrations.
 ```js
 adonis migration:run
 ```
+
+## API Endpoints
+
+### /rooms
+
+**GET /** Returns all the rooms in the api
+
+**POST /** Posts a new room in the api. Expected data are:
+
+- name: string|required
+- name: string|required
+- type: string|required
+- bed_capacity: number|required,
+- available_beds: number|required,
+- cost_per_bed: number|required,
+- mixed: boolean|require
+
+Throws:
+
+- 400: Bad data
+
+**PATCH /id** Updates a new room in the api. Following fields can be updated:
+
+- name: string
+- name: string
+- type: string
+- bed_capacity: number,
+- available_beds: number,
+- cost_per_bed: number,
+- mixed: boolean|required
+
+Throws:
+
+- 404: Not found room
+- 400: Bad data
+
+**DELETE /id** Removes a room from the API
+
+Throws:
+
+- 404: Not found room
+
+### /rooms/available
+
+**GET /**
+Checks for all the available rooms in the API.
+
+### rooms/reservation/cost
+
+**POST /**
+Calculates the cost of a reservatio. It expects a body with the below fields:
+
+- beds: number|required
+- room_id: number|required
+
+### rooms/reservation
+
+**POST /**
+Reserves rooms. It expects a body with an array of objects filled with the below fields:
+
+- beds: number|required
+- room_id: number|required
+
+## Testing
+
+To run test: `adonis test`

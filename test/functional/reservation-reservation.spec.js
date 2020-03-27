@@ -20,7 +20,7 @@ test("calculate costs for a reservation", async ({ assert, client }) => {
   ];
   const response = await client
     .post("/rooms/reservation")
-    .send({ reservations: data })
+    .send(data)
     .end();
 
   response.assertStatus(200);
