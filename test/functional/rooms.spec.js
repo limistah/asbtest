@@ -47,6 +47,12 @@ test("contains default rooms", async ({ client }) => {
 //   response.assertStatus(422);
 // });
 
+test("throws for update a invalid room", async ({ client }) => {
+  const response = await client.patch(`/rooms/1000`).end();
+  console.log(response.error);
+  response.assertStatus(404);
+});
+
 test("can update a room", async ({ client }) => {
   const newRoom = await Room.create(defaultRooms[0]);
 
@@ -65,9 +71,14 @@ test("can update a room", async ({ client }) => {
   });
 });
 
+test("throws for delete a invalid room", async ({ client }) => {
+  const response = await client.delete(`/rooms/1000`).end();
+  console.log(response.error);
+  response.assertStatus(404);
+});
+
 test("can delete a room", async ({ client }) => {
   const newRoom = await Room.create(defaultRooms[0]);
-
   const response = await client.delete(`/rooms/${newRoom.id}`).end();
   console.log(response.error);
   response.assertStatus(200);
