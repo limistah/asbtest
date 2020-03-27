@@ -15,7 +15,7 @@ class RoomController {
         "cost_per_bed"
       ])
     );
-    return response.json({ room });
+    return response.json({ room }, 201);
   }
 
   async index({ response }) {
@@ -23,12 +23,12 @@ class RoomController {
     return response.json({ rooms });
   }
 
-  async index({ response, request }) {
-    const rooms = await Database.table("dorm_rooms").where(
-      "id",
-      request.params.id
-    );
-    return response.json({ rooms });
+  async update({ response, request }) {
+    await Room.query()
+      .where("id", request.params.id)
+      .update(request.all());
+    const room = await Room.find(request.params.id);
+    return response.json({ room });
   }
 }
 

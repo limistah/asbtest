@@ -19,9 +19,6 @@ const Route = use("Route");
 Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
-Route.resource("rooms", "RoomController").only([
-  "store",
-  "show",
-  "index",
-  "update"
-]);
+Route.resource("rooms", "RoomController")
+  .only(["store", "show", "index", "update"])
+  .validator(new Map([[["rooms.store"], ["StoreRoom"]]]));
