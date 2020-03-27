@@ -19,6 +19,13 @@ const Route = use("Route");
 Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
+
+Route.resource("room/available", "RoomAvailabilityController");
+
+Route.resource("rooms/reservation", "RoomReservationController").only([
+  "store"
+]);
+
 Route.resource("rooms", "RoomController")
   .only(["store", "show", "index", "update", "destroy"])
   .middleware(new Map([[["rooms.update", "rooms.destroy"], ["roomExists"]]]))
