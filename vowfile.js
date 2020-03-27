@@ -33,7 +33,8 @@ module.exports = (cli, runner) => {
     | Migrate the database before starting the tests.
     |
     */
-    await ace.call("migration:run");
+    await ace.call("migration:refresh");
+    await ace.call("seed");
   });
 
   runner.after(async () => {

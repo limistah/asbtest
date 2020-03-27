@@ -19,4 +19,9 @@ const Route = use("Route");
 Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
-Route.post("rooms", "RoomController.store");
+Route.resource("rooms", "RoomController").only([
+  "store",
+  "show",
+  "index",
+  "update"
+]);
