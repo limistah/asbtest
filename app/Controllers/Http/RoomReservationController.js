@@ -1,6 +1,7 @@
 "use strict";
 
 const Room = use("App/Models/Room");
+const Event = use("Event");
 
 class RoomReservationController {
   async store({ response, request }) {
@@ -24,6 +25,7 @@ class RoomReservationController {
         bookings[reservation.id] = { reservation, room };
       }
     }
+    Event.fire("new::reservation", bookings);
     return response.json({ bookings }, 201);
   }
 }
