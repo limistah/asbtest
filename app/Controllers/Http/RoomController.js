@@ -30,6 +30,11 @@ class RoomController {
     const room = await Room.find(request.params.id);
     return response.json({ room });
   }
+
+  async destroy({ response, request }) {
+    const room = await Room.find(request.params.id);
+    return response.json({ room: room.delete() });
+  }
 }
 
 module.exports = RoomController;

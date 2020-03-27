@@ -20,5 +20,5 @@ Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
 Route.resource("rooms", "RoomController")
-  .only(["store", "show", "index", "update"])
+  .only(["store", "show", "index", "update", "destroy"])
   .validator(new Map([[["rooms.store"], ["StoreRoom"]]]));

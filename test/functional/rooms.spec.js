@@ -64,3 +64,11 @@ test("can update a room", async ({ client }) => {
     room: _room
   });
 });
+
+test("can delete a room", async ({ client }) => {
+  const newRoom = await Room.create(defaultRooms[0]);
+
+  const response = await client.delete(`/rooms/${newRoom.id}`).end();
+  console.log(response.error);
+  response.assertStatus(200);
+});
