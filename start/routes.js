@@ -21,4 +21,5 @@ Route.get("/", () => {
 });
 Route.resource("rooms", "RoomController")
   .only(["store", "show", "index", "update", "destroy"])
+  .middleware(new Map([[["rooms.update", "rooms.destroy"], ["roomExists"]]]))
   .validator(new Map([[["rooms.store"], ["StoreRoom"]]]));
