@@ -3,27 +3,39 @@ services:
   adonisjs:
     container_name: adonisjs
     build:
-      context: .
+      context: ./docker
+      dockerfile: adonis.Dockerfile
     volumes:
       - ./:/home/node/app
     command: "adonis serve --dev"
     ports:
-      - 3000:3333
-    # depends_on:
-    #   - postgress
+      - 3333:3333
+    depends_on:
+      - postgres
     networks:
       - app-proxy
-
-#   postgress:
-#     image: "postgres"
-#     volumes:
-#       - ./pg-data:/data
-#     ports:
-#       - "6379:6379"
-#     environment:
-#       - POSTGRESS_PASSWORD: "my_password"
-#     networks:
-#       - app-proxy
-
+      - default
+  nginx:
+    build:
+      context: ./docker
+      dockerfile: nginx.Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - adonisjs
+    networks:
+      - app-proxy
+      - default
+  postgres:
+    container_name: postgres
+    image: "postgres"
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "my_password"
+    networks:
+      - app-proxy
+      - default
 networks:
   app-proxy:

@@ -5,9 +5,9 @@ RUN npm i -g @adonisjs/cli
 
 WORKDIR /home/node/app
 
-COPY ./ /home/node/app
+# COPY ../ /home/node/app
 
-RUN npm install
+# RUN npm install
 
 USER "node"
 
