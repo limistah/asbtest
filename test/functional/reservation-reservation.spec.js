@@ -22,7 +22,6 @@ test("calculate costs for a reservation", async ({ assert, client }) => {
     .post("/rooms/reservation")
     .send({ reservations: data })
     .end();
-  console.log(response.body);
 
   response.assertStatus(200);
 });

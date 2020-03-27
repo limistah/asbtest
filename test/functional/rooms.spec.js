@@ -1,9 +1,17 @@
 "use strict";
 
-const { test, trait } = use("Test/Suite")("Rooms");
+const { test, trait, before } = use("Test/Suite")("Rooms");
+
+// const { before, beforeEach, after, afterEach } = Suite
 const Room = use("App/Models/Room");
 const defaultRooms = require("../../libs/defaultRooms");
 trait("Test/ApiClient");
+const ace = require("@adonisjs/ace");
+
+before(async () => {
+  await ace.call("migration:refresh");
+  await ace.call("seed");
+});
 
 // test("POST /rooms returns 422 for invalid data", async ({ client }) => {
 //   const duplicateRoom = Object.assign({}, defaultRooms[0]);

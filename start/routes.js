@@ -20,7 +20,11 @@ Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
 
-Route.resource("room/available", "RoomAvailabilityController");
+Route.resource("rooms/available", "RoomAvailabilityController").only(["index"]);
+
+Route.resource("rooms/reservation/cost", "RoomReservationCostController").only([
+  "store"
+]);
 
 Route.resource("rooms/reservation", "RoomReservationController").only([
   "store"

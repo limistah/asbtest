@@ -1,8 +1,14 @@
 "use strict";
 
-const { test, trait } = use("Test/Suite")("Room Availability");
+const { test, trait, before } = use("Test/Suite")("Room Availability");
 trait("Test/ApiClient");
 const defaultRooms = require("../../libs/defaultRooms");
+const ace = require("@adonisjs/ace");
+
+before(async () => {
+  await ace.call("migration:refresh");
+  await ace.call("seed");
+});
 
 test("make sure 2 + 2 is 4", async ({ assert }) => {
   assert.equal(2 + 2, 4);
