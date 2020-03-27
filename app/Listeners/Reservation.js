@@ -2,7 +2,7 @@
 
 const Reservation = (exports = module.exports = {});
 
-const Bookings = use("App/Models/Bookings");
+const Booking = use("App/Models/Booking");
 
 Reservation.new = async bookings => {
   console.log("Notify the admin namespace about the event");
@@ -15,7 +15,7 @@ Reservation.new = async bookings => {
         bed_spaces: booking.reservation.beds
       };
 
-      await Bookings.create(data);
+      await Booking.create(data);
     }
   }
 };

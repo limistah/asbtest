@@ -5,9 +5,8 @@ const Schema = use("Schema");
 
 class CreateBookingSchema extends Schema {
   up() {
-    this.create("create_bookings", table => {
+    this.create("bookings", table => {
       table.increments();
-      table.timestamps();
       table.timestamps();
       table.string("room_id");
       table.integer("bed_spaces");

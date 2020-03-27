@@ -10,8 +10,7 @@ $(function() {
   ws.on("open", () => {
     const bookings = ws.subscribe("booking");
     bookings.on("bookings", bookings => {
-      console.log(bookigs);
-      alert("New Booking");
+      alert("Total Subscriptions:", bookings.length || "0");
     });
   });
   setTimeout(() => {

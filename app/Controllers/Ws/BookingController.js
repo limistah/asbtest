@@ -5,8 +5,9 @@ class BookingController {
     this.socket = socket;
     this.request = request;
   }
-  onMessage() {
-    this.socket.emit("bookings", 200);
+  async onMessage() {
+    const Booking = use("App/Models/Booking");
+    this.socket.emit("bookings", await Booking.all());
   }
 }
 
