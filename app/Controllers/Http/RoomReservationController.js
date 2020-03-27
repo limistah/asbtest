@@ -9,8 +9,8 @@ class RoomReservationController {
     let room = {};
 
     const bookings = {};
-    for (let index = 0; index < data.length; index++) {
-      const reservation = data[index];
+    for (let index = 0; index < data.reservations.length; index++) {
+      const reservation = data.reservations[index];
       room = await Room.query()
         .where("id", reservation.id)
         .where("available_beds", ">", reservation.beds)

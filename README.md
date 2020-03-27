@@ -104,7 +104,7 @@ Checks for all the available rooms in the API.
 ### rooms/reservation/cost
 
 **POST /**
-Calculates the cost of a reservatio. It expects a body with the below fields:
+Calculates the cost of a reservatio. It expects a body with an array of objects filled with the below fields:
 
 - beds: number|required
 - room_id: number|required

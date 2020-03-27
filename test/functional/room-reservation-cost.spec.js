@@ -9,7 +9,7 @@ test("calculate costs for a reservation", async ({ assert, client }) => {
     { beds: 2, id: 3 },
     { beds: 3, id: 2 }
   ];
-  // From Seeded data
+  // From Seeded
   const totalCost = 1 * 20 + 3 * 20 + 2 * 50;
 
   const response = await client
