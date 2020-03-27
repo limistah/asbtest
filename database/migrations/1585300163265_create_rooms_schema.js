@@ -5,7 +5,7 @@ const Schema = use("Schema");
 
 class CreateRoomsSchema extends Schema {
   up() {
-    this.createIfNotExists("rooms", table => {
+    this.createIfNotExists("dorm_rooms", table => {
       table.increments();
       table.timestamps();
       table.string("name");
@@ -18,7 +18,7 @@ class CreateRoomsSchema extends Schema {
   }
 
   down() {
-    this.dropIfExists("rooms");
+    this.dropIfExists("dorm_rooms");
   }
 }
 
