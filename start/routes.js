@@ -16,10 +16,6 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
-Route.get("/", () => {
-  return { greeting: "Hello world in JSON" };
-});
-
 Route.resource("rooms/available", "RoomAvailabilityController").only(["index"]);
 
 Route.resource("rooms/reservation/cost", "RoomReservationCostController").only([
